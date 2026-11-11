@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>company name</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+     <h1>company name</h1>
+     <p>welcome to our company</p>
+     <nav>
+        <a href="#services">Services</a>
+        <a href="#work">Recent work</a>
+        <a href="#reviews">Customer Reviews</a>
+     </nav>
+    </header>
+
+    <main>
+        <section id="services">
+            <h2>Our Services</h2>
+            <ul>
+                <li>Roof replacement</li>
+                <li>Roof repair</li>
+                <li>Storm damage inspection</li>
+            </ul>
+        </section>
+        <section id="work">
+            <h2>Recent work</h2>
+            <div>
+                <h3>Residential Roof Upgrade</h3>
+                <p>We recently completed a residential roof upgrade in [location]. The project involved replacing the old shingles with new, durable materials to enhance the home's aesthetic and protect it from the elements.</p>
+            </div>
+            <div>
+                <h3>Commercial Roof Repair</h3>
+                <p>Our team successfully repaired a commercial roof in [location], addressing leaks and structural issues. The repair work ensured the building's safety and longevity.</p>
+            </div>
+        </section>
+        <section id="reviews">
+            <h2>Customer Reviews</h2>
+            <div>
+                <p>"The team was professional and efficient. My new roof looks fantastic!"</p>
+                <strong>- John D.</strong>
+            </div>
+            <div>
+                <p>"I highly recommend this company for any roofing needs. They exceeded my expectations."</p>
+                <strong>- Sarah K.</strong>
+            </div>
+        </section>
+        <section>
+            <form>
+                <label for="name">Full Name</label>
+                <input id="name" type="text" placeholder="Your name">
+                <label for="phone">Phone Number</label>
+                <input id="phone" type="tel" placeholder="your phone number">
+                <label for="address">Address</label>
+                <input id="address" type="text" placeholder="your address">
+                <label for="details">Details</label>
+                <textarea id="details" rows="4" placeholder="Tell about your roofing needs"></textarea>
+                <button type="submit">Send Request</button>
+            </form>
+            <p id="message"></p>
+        </section>
+    </main>
+
+    <footer>
+        <h3>Contact Us</h3>
+        <p>[phone number or contact details]</p>
+        <p>[email address]</p>
+        <p>[physical address]</p>
+        <p>Intagram</p>
+    </footer>
+</body>
+<script>
+    const form=document.querySelector("form");
+    form.addEventListener("submit",function(event){
+       event.preventDefault();
+       const nameInput=document.querySelector("#name");
+       const phoneInput=document.querySelector("#phone");
+       const addressInput=document.querySelector("#address");
+       const message=document.querySelector("#message");
+       const name=nameInput.value.trim();
+       const phone=phoneInput.value.trim();
+       const address=addressInput.value.trim();
+       const phoneDigits=phone.replace(/\D/g,"");
+       if(name==="" && phone===""){
+        message.textContent="please enter your name and phone number.";
+        return;
+       } 
+       else{
+        if(name===""){
+            message.textContent="Please enter your name.";
+            return;
+        }
+        if(phone===""){
+            message.textContent="Please enter your phone number.";
+            return;
+        }
+        if(phoneDigits.length!==10){
+            message.textContent="Enter the 10 digit number";
+            return;
+        }
+        if(address === ""){
+            message.textContent="Please enter your address.";
+            return;
+        }
+       }
+       message.textContent="Thank you for your request";
+
+    });
+</script>
+</html>
